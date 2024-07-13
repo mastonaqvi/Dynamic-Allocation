@@ -1,0 +1,88 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
+bool readFromFile(ifstream &in, int & size, int* & arr) {
+    if (in)
+    {
+    size = 0;
+    int num;
+    while (in >> num) {
+        size++;
+    }
+    arr = new int[size];
+
+    
+    in.close();
+    in.open("data3.txt");
+
+    int index = 0;
+    while (in >> num) {
+        arr[index++] = num;
+    }
+
+    in.close();
+    return true;
+
+    }else {
+        cout << "File Does Not OPen" << endl;
+        return false;
+    }
+
+     
+
+}
+
+
+bool isPrime(int n) {
+   if (n == 1 ) {
+        return true;
+    }
+    for (int i = 2; i <= n / 2; ++i) {
+        if (n % i == 0) {
+            return  false;
+           
+        }
+    }
+}
+
+
+void display(int range) {
+    cout << "Prime numbers from 1 to " << range << " are: " ;
+    for (int num = 1; num <= range; num++) {
+        if (isPrime(num)) {
+            cout << num << " ";
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    ifstream in;
+    in.open("data3.txt");
+    if (!in) {
+        cout << "File does not open "  << endl;
+      
+    }
+
+    int size;
+    int* ranges = nullptr;
+
+    
+    if (!readFromFile(in, size, ranges)) {
+        in.close();
+        return false;  
+    }
+
+   
+    for (int i = 0; i < size; i++) {
+        display(ranges[i]);
+    }
+
+    
+    delete[] ranges;
+    in.close();
+
+    return 0;
+}
