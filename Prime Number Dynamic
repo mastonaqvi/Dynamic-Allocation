@@ -49,7 +49,7 @@ bool isPrime(int n) {
 
 
 void display(int range) {
-    cout << "Prime numbers from 1 to " << range << " are: " ;
+    cout << "Prime numbers from One to " << range << " are: " ;
     for (int num = 1; num <= range; num++) {
         if (isPrime(num)) {
             cout << num << " ";
