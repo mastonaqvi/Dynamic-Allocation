@@ -26,7 +26,7 @@ bool readFromFile(ifstream &in, int & size, int* & arr) {
     return true;
 
     }else {
-        cout << "File Does Not OPen" << endl;
+        cout << "File Does Not Open" << endl;
         return false;
     }
 
